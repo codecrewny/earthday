@@ -1,0 +1,47 @@
+@import "compass/reset";
+
+@font-face {
+  font-family: 'Questrial';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Questrial'), local('Questrial-Regular'), url(http://themes.googleusercontent.com/static/fonts/questrial/v3/MYWJ4lYm5dbZ1UBuYox79LO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
+// $width = 500px;
+
+html {
+  min-height: 100%;
+  background-size: cover;
+  background-image: url(../img/skyline.jpg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+body {
+  min-height:100%;
+  // width: $width;
+  width: 500px;
+  margin: 10px auto;
+}
+
+header {
+  font-family: 'Questrial', sans-serif;
+  color: white;
+  font-size: 6em;
+}
+
+// @media screen and (max-width: )
+
+
+
+// body {
+//   background-image:url('../img/skyline.jpg');
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+// }
+// @media screen and (max-width: 1024px) { /* Specific to this particular image */
+//   body {
+//     background-position: center center;
+//   }
+// }
