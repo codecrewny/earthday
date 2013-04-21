@@ -86,7 +86,19 @@ body {
   margin: 10px auto;
 }
 
-/* line 26, ../scss/style.scss */
+/* line 24, ../scss/style.scss */
+.smoggy {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/SMOG.png);
+  opacity: 1;
+  z-index: -1;
+}
+
+/* line 35, ../scss/style.scss */
 header {
   font-family: 'Questrial', sans-serif;
   color: white;

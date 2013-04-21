@@ -7,7 +7,7 @@
   src: local('Questrial'), local('Questrial-Regular'), url(http://themes.googleusercontent.com/static/fonts/questrial/v3/MYWJ4lYm5dbZ1UBuYox79LO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
 }
 
-// $width = 500px;
+$width: 500px;
 
 html {
   min-height: 100%;
@@ -18,9 +18,18 @@ html {
 }
 body {
   min-height:100%;
-  // width: $width;
-  width: 500px;
+  width: $width;
   margin: 10px auto;
+}
+.smoggy {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/SMOG.png);
+  opacity: 1;
+  z-index:-1;
 }
 
 header {
@@ -29,19 +38,6 @@ header {
   font-size: 6em;
 }
 
-// @media screen and (max-width: )
-
-
-
-// body {
-//   background-image:url('../img/skyline.jpg');
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
+// @media screen and (max-width: $width) {
 // }
-// @media screen and (max-width: 1024px) { /* Specific to this particular image */
-//   body {
-//     background-position: center center;
-//   }
-// }
+
