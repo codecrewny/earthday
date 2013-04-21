@@ -1,6 +1,6 @@
 var years_graph = function() {
     var w=500;
-    var h=100;
+    var h=300;
     var barPadding;
     var dataset = [
         [1980,86.28610354],
@@ -61,8 +61,7 @@ var years_graph = function() {
 	.enter()
 	.append("circle")
 	.attr("cx", function(d) {
-	    return xScale(d[0]);
-    })
+	    return xScale(d[0]);})
 	.attr("cy", function(d) {
 	    return yScale(d[1]);})
 	.attr("r", 5)
@@ -79,10 +78,12 @@ var years_graph = function() {
     var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks(dataset.length);
+        .tickFormat(d3.format("g"))
+        .ticks(5);
     svg.append("g")
 	.attr("class", "axis") //Assign "axis" class
 	.attr("transform", "translate(0," + (h - padding) + ")")
+        .attr("fill", "white")
 	.call(xAxis);   //same as what the commented content did
 
     var yAxis=d3.svg.axis()
@@ -93,7 +94,23 @@ var years_graph = function() {
 	.attr("class","axis")
 	.attr("transform","translate("+padding+",0)")
 	.call(yAxis);
-    
+/*    
+    svg.selectAll("circle")
+      .on("mouseover", function(d) {
+	  svg.select(this)
+	  .attr("fill", "white")
+	  .transition()
+	  .duration(100)
+	      .attr("fill", "red");
+	  })
+      .on("mouseout", function(d) {
+	  svg.select(this)
+	  .transition()
+	  .duration(100)
+	      .attr("fill", "white");
+      });
+
+*/
     // var formatAsPercentage=d3.format(".1%");
     // formatAsPercentage(0.2143) returns 21.4%
 };
