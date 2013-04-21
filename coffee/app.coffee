@@ -1,6 +1,6 @@
 $ ->
   current_url = document.URL
-  pattern = /#(.+)$/
+  pattern = /earthday\/#(.+)$/
   n = 0 # which slide to show (will add one to this)
   if current_url.match pattern
     str = current_url.match(pattern)[1]
@@ -19,7 +19,7 @@ $ ->
       n++ unless n >= slides.length
     else if dir is "prev"
       n-- unless n <= 1
-    slide = $("/earthday/#slide#{n}")
+    slide = $("#slide#{n}")
     slide.show()
     year = slide.attr "year"
     $("#year").text year

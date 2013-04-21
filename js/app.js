@@ -6,7 +6,7 @@
     var current_url, n, pattern, pattern2, slides, str;
 
     current_url = document.URL;
-    pattern = /#(.+)$/;
+    pattern = /earthday\/#(.+)$/;
     n = 0;
     if (current_url.match(pattern)) {
       str = current_url.match(pattern)[1];
@@ -32,7 +32,7 @@
           n--;
         }
       }
-      slide = $("/earthday/#slide" + n);
+      slide = $("#slide" + n);
       slide.show();
       year = slide.attr("year");
       $("#year").text(year);
