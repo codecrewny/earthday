@@ -18,6 +18,7 @@
       history.pushState({}, "welcome", "/earthday/#slide1");
     }
     slides = $(".slide");
+    years_graph();
     $("nav > button").on("click", function() {
       var cache, dir;
 

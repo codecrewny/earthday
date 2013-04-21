@@ -154,7 +154,7 @@ header {
   text-align: left;
   display: block;
   width: 500px;
-  height: 450px;
+  min-height: 600px;
   margin: auto;
   color: white;
   z-index: 0;
@@ -182,33 +182,29 @@ header {
   z-index: 1;
 }
 
-/* line 99, ../scss/style.scss */
-footer {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-/* line 103, ../scss/style.scss */
+/* line 100, ../scss/style.scss */
 #data {
   width: 100%;
   height: 100px;
   text-align: center;
 }
 
-/* line 109, ../scss/style.scss */
+/* line 106, ../scss/style.scss */
 nav {
   height: 100px;
   width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
 }
-/* line 112, ../scss/style.scss */
+/* line 109, ../scss/style.scss */
 nav #year {
   font-size: 3em;
-  color: black;
+  color: white;
   position: absolute;
   left: 50%;
   margin-top: 20px;
 }
 
-/* line 121, ../scss/style.scss */
+/* line 119, ../scss/style.scss */
 button.nav {
   width: 2em;
   font-size: 3em;
@@ -216,23 +212,27 @@ button.nav {
   background-color: rgba(255, 255, 255, 0.5);
   border: 0;
   position: absolute;
+  border-radius: 5px;
+  margin-top: 0.25em;
 }
-/* line 128, ../scss/style.scss */
+/* line 127, ../scss/style.scss */
 button.nav:hover {
   color: black;
   background-color: white;
+  cursor: hand;
+  cursor: pointer;
 }
-/* line 132, ../scss/style.scss */
+/* line 133, ../scss/style.scss */
 button.nav:active {
   background-color: rgba(204, 204, 204, 0.5);
 }
 
-/* line 137, ../scss/style.scss */
+/* line 139, ../scss/style.scss */
 button#prev {
   left: 1em;
 }
 
-/* line 141, ../scss/style.scss */
+/* line 143, ../scss/style.scss */
 button#next {
   right: 1em;
 }
