@@ -19,9 +19,9 @@
     }
     slides = $(".slide");
     $("nav > button").on("click", function() {
-      var dir, slide, year;
+      var cache, dir;
 
-      $("#slide" + n).hide();
+      cache = n;
       dir = $(this).attr("id");
       if (dir === "next") {
         if (!(n >= slides.length)) {
@@ -32,12 +32,40 @@
           n--;
         }
       }
-      slide = $("#slide" + n);
-      slide.show();
-      year = slide.attr("year");
-      $("#year").text(year);
-      document.title = "(" + n + "/" + slides.length + ") Earth Day";
-      return history.pushState({}, "switching slides", "/earthday/#slide" + n);
+      if (cache !== n) {
+        cache = $("#slide" + cache);
+        if (dir === "prev") {
+          cache.addClass("bounceOutRight");
+        }
+        if (dir === "next") {
+          cache.addClass("bounceOutLeft");
+        }
+        return delay(0.5, function() {
+          var slide, year;
+
+          cache.removeClass("bounceOutRight bounceOutLeft").hide();
+          slide = $("#slide" + n);
+          if (dir === "prev") {
+            slide.show().addClass("bounceInLeft");
+          }
+          if (dir === "next") {
+            slide.show().addClass("bounceInRight");
+          }
+          delay(1, function() {
+            return slide.removeClass("bounceInLeft bounceInRight");
+          });
+          year = slide.attr("year");
+          $("#year").text(year);
+          document.title = "(" + n + "/" + slides.length + ") Earth Day";
+          return history.pushState({}, "switching slides", "/earthday/#slide" + n);
+        });
+      } else {
+        cache = $("#slide" + cache);
+        cache.addClass("wiggle");
+        return delay(1, function() {
+          return cache.removeClass("wiggle");
+        });
+      }
     });
     $("#next").click();
     $(".smogbuttons > button").on("click", function() {

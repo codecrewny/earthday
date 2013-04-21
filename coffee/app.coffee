@@ -13,18 +13,31 @@ $ ->
   slides = $(".slide")
 
   $("nav > button").on "click", ->
-    $("#slide#{n}").hide()
+    cache = n
     dir = $(this).attr "id"
     if dir is "next"
       n++ unless n >= slides.length
     else if dir is "prev"
       n-- unless n <= 1
-    slide = $("#slide#{n}")
-    slide.show()
-    year = slide.attr "year"
-    $("#year").text year
-    document.title = "(#{n}/#{slides.length}) Earth Day"
-    history.pushState {}, "switching slides", "/earthday/#slide#{n}"
+    if cache isnt n
+      cache = $("#slide#{cache}")
+      cache.addClass "bounceOutRight" if dir is "prev"
+      cache.addClass "bounceOutLeft" if dir is "next"
+      delay 0.5, ->
+        cache.removeClass("bounceOutRight bounceOutLeft").hide()
+        slide = $("#slide#{n}")
+        slide.show().addClass "bounceInLeft" if dir is "prev"
+        slide.show().addClass "bounceInRight" if dir is "next"
+        delay 1, -> slide.removeClass "bounceInLeft bounceInRight"
+        year = slide.attr "year"
+        $("#year").text year
+        document.title = "(#{n}/#{slides.length}) Earth Day"
+        history.pushState {}, "switching slides", "/earthday/#slide#{n}"
+    else
+      cache = $("#slide#{cache}")
+      cache.addClass "wiggle"
+      delay 1, ->
+        cache.removeClass "wiggle"
   $("#next").click()
 
 
