@@ -12,14 +12,7 @@ $ ->
     slide.show()
     year = slide.attr "year"
     $("#year").text year
-    if n is slides.length
-      $("#next").attr "disabled", "disabled"
-    else
-      $("#next").removeAttr "disabled"
-    if n is 1
-      $("#prev").attr "disabled", "disabled"
-    else
-      $("#prev").removeAttr "disabled"
+    document.title = "(#{n}/#{slides.length-1}) Earth Day"
   $("#next").click()
 
 
@@ -36,7 +29,7 @@ $ ->
     # left is 37
     if key is 37
       $("#prev").click()
-      return false
+      # return false
     if key is 39
       $("#next").click()
-      return false
+      # return false

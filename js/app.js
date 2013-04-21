@@ -25,16 +25,7 @@
       slide.show();
       year = slide.attr("year");
       $("#year").text(year);
-      if (n === slides.length) {
-        $("#next").attr("disabled", "disabled");
-      } else {
-        $("#next").removeAttr("disabled");
-      }
-      if (n === 1) {
-        return $("#prev").attr("disabled", "disabled");
-      } else {
-        return $("#prev").removeAttr("disabled");
-      }
+      return document.title = "(" + n + "/" + (slides.length - 1) + ") Earth Day";
     });
     $("#next").click();
     $(".smogbuttons > button").on("click", function() {
@@ -48,11 +39,9 @@
       key = event.which;
       if (key === 37) {
         $("#prev").click();
-        return false;
       }
       if (key === 39) {
-        $("#next").click();
-        return false;
+        return $("#next").click();
       }
     });
   });

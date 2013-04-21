@@ -123,7 +123,14 @@ header {
 }
 
 /* line 56, ../scss/style.scss */
+.slides {
+  height: auto;
+  min-height: 100%;
+}
+
+/* line 61, ../scss/style.scss */
 .slide {
+  text-align: left;
   display: block;
   width: 500px;
   height: auto;
@@ -148,27 +155,25 @@ header {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
   /* IE6-9 */
 }
-/* line 73, ../scss/style.scss */
+/* line 79, ../scss/style.scss */
 .slide p {
   z-index: 1;
 }
 
-/* line 78, ../scss/style.scss */
+/* line 84, ../scss/style.scss */
 #data {
   width: 100%;
   height: 100px;
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 1em;
   text-align: center;
 }
 
-/* line 86, ../scss/style.scss */
+/* line 91, ../scss/style.scss */
 nav {
   height: 100px;
   width: 100%;
-  padding: 1em;
 }
-/* line 90, ../scss/style.scss */
+/* line 94, ../scss/style.scss */
 nav #year {
   font-size: 3em;
   color: white;
@@ -177,31 +182,31 @@ nav #year {
   margin-top: 20px;
 }
 
-/* line 99, ../scss/style.scss */
+/* line 103, ../scss/style.scss */
 button.nav {
   width: 2em;
   font-size: 3em;
-  color: white;
-  background-color: rgba(255, 255, 255, 0.2);
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
   border: 0;
   position: absolute;
 }
-/* line 106, ../scss/style.scss */
+/* line 110, ../scss/style.scss */
 button.nav:hover {
   color: black;
   background-color: white;
 }
-/* line 110, ../scss/style.scss */
+/* line 114, ../scss/style.scss */
 button.nav:active {
   background-color: rgba(204, 204, 204, 0.5);
 }
 
-/* line 115, ../scss/style.scss */
+/* line 119, ../scss/style.scss */
 button#prev {
   left: 1em;
 }
 
-/* line 119, ../scss/style.scss */
+/* line 123, ../scss/style.scss */
 button#next {
   right: 1em;
 }
