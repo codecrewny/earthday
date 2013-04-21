@@ -3,8 +3,10 @@
   var adjust_smog, delay, puts, yell;
 
   $(function() {
-    var current_url, n, pattern, pattern2, slides, str;
+    var animating, current_url, n, pattern, pattern2, slides, str, wiggle_count;
 
+    animating = false;
+    wiggle_count = 0;
     current_url = document.URL;
     pattern = /earthday\/#(.+)$/;
     n = 0;
@@ -12,6 +14,7 @@
       str = current_url.match(pattern)[1];
       pattern2 = /slide([\d]+)$/;
       if (str.match(pattern2)) {
+        $("#toc").val(str.match(pattern2)[1]);
         n = parseInt(str.match(pattern2)[1]) - 1;
       }
     } else {
@@ -28,7 +31,7 @@
         if (!(n >= slides.length)) {
           n++;
         }
-      } else if (dir === "prev") {
+      } else {
         if (!(n <= 1)) {
           n--;
         }
@@ -44,7 +47,7 @@
         return delay(0.5, function() {
           var slide, year;
 
-          c.removeClass("bounceOutRight bounceOutLeft").hide();
+          c.hide().removeClass("bounceOutRight bounceOutLeft");
           slide = $("#slide" + n);
           if (dir === "prev") {
             slide.show().addClass("bounceInLeft");
@@ -59,7 +62,7 @@
           $("#year").text(year);
           document.title = "(" + n + "/" + slides.length + ") Earth Day";
           history.pushState({}, "switching slides", "/earthday/#slide" + n);
-          return adjust_smog(n, cache, slides.length);
+          return adjust_smog(year);
         });
       } else {
         cache = $("#slide" + cache);
@@ -100,22 +103,17 @@
     return location.reload();
   };
 
-  adjust_smog = function(n, p) {
-    var len, severity;
+  adjust_smog = function(year) {
+    var yr;
 
-    len = 13;
-    severity = len - n;
-    if (severity < len / 3) {
-      return $("#smog").removeClass("smoggy");
-    } else if (severity < len / 2) {
-      if (n > p) {
-        return $("#smog").addClass("smoggy");
-      } else {
-        return $("#smog").removeClass("pollutiony");
-      }
-    } else {
+    yr = parseInt(year, 10);
+    if (year === "" || yr < 1992) {
+      return $(".effects").children().addClass("smoggy pollutiony");
+    } else if (yr < 2000) {
       $("#smog").addClass("smoggy");
-      return $("#pollution").addClass("pollutiony");
+      return $("#pollution").removeClass("pollutiony");
+    } else {
+      return $(".effects").children().removeClass("smoggy pollutiony");
     }
   };
 

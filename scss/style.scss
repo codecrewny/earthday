@@ -12,7 +12,7 @@ $width: 500px;
 html {
   min-height: 100%;
   background-size: cover;
-  background-image: url(../img/skyline.jpg);
+  background-image: url(../img/SKYLINE.jpg);
   background-repeat: no-repeat;
   background-position: bottom center;
   font-family: 'Questrial', sans-serif;
@@ -38,25 +38,25 @@ li {
 p,li,h2 {
   margin-top: 5px;
 }
-.smog {
+.smoggy {
   position: absolute;
   left: 0px;
-  bottom: 20%;
+  bottom: 0px;
   width: 100%;
   height: 100%;
-  background-image: url(../img/SMOG.png);
+  // background-image: url(../img/SMOG1.png);
   opacity: 1;
   z-index: -2;
 }
 
-.pollution {
+.pollutiony {
   position: absolute;
   left: 0px;
-  bottom: 65%;
+  bottom: 0px;
   width: 100%;
   height: 100%;
-  background-image: url(../img/POLLUTION.png);
-  opacity: 1;
+  background-image: url(../img/SMOG2.png);
+  opacity: 0.5;
   z-index:-1;
 }
 
