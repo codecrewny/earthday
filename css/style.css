@@ -91,6 +91,27 @@ h2 {
 }
 
 /* line 27, ../scss/style.scss */
+a {
+  color: white;
+  text-decoration: none;
+}
+/* line 30, ../scss/style.scss */
+a:hover {
+  color: pink;
+}
+
+/* line 34, ../scss/style.scss */
+li {
+  list-style-type: disc;
+  margin-left: 1em;
+}
+
+/* line 38, ../scss/style.scss */
+p, li, h2 {
+  margin-top: 5px;
+}
+
+/* line 41, ../scss/style.scss */
 .smog {
   position: absolute;
   left: 0px;
@@ -102,7 +123,7 @@ h2 {
   z-index: -2;
 }
 
-/* line 38, ../scss/style.scss */
+/* line 52, ../scss/style.scss */
 .pollution {
   position: absolute;
   left: 0px;
@@ -114,7 +135,7 @@ h2 {
   z-index: -1;
 }
 
-/* line 49, ../scss/style.scss */
+/* line 63, ../scss/style.scss */
 header {
   color: white;
   font-size: 6em;
@@ -122,45 +143,46 @@ header {
   margin: 10px auto;
 }
 
-/* line 56, ../scss/style.scss */
+/* line 70, ../scss/style.scss */
 .slides {
   height: auto;
   min-height: 100%;
 }
 
-/* line 61, ../scss/style.scss */
+/* line 75, ../scss/style.scss */
 .slide {
   text-align: left;
   display: block;
   width: 500px;
-  height: auto;
+  height: 450px;
   margin: auto;
   color: white;
   z-index: 0;
   padding: 1em;
   border-radius: 5px;
   font-size: 1.5em;
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 65%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(65%, rgba(0, 0, 0, 0.65)), color-stop(100%, rgba(0, 0, 0, 0)));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 65%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 65%, rgba(0, 0, 0, 0) 100%);
   /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 65%, rgba(0, 0, 0, 0) 100%);
   /* IE10+ */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 65%, rgba(0, 0, 0, 0) 100%);
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
   /* IE6-9 */
+  overflow: auto;
 }
-/* line 79, ../scss/style.scss */
+/* line 93, ../scss/style.scss */
 .slide p {
   z-index: 1;
 }
 
-/* line 84, ../scss/style.scss */
+/* line 99, ../scss/style.scss */
 #data {
   width: 100%;
   height: 100px;
@@ -168,12 +190,12 @@ header {
   text-align: center;
 }
 
-/* line 91, ../scss/style.scss */
+/* line 106, ../scss/style.scss */
 nav {
   height: 100px;
   width: 100%;
 }
-/* line 94, ../scss/style.scss */
+/* line 109, ../scss/style.scss */
 nav #year {
   font-size: 3em;
   color: white;
@@ -182,7 +204,7 @@ nav #year {
   margin-top: 20px;
 }
 
-/* line 103, ../scss/style.scss */
+/* line 118, ../scss/style.scss */
 button.nav {
   width: 2em;
   font-size: 3em;
@@ -191,22 +213,22 @@ button.nav {
   border: 0;
   position: absolute;
 }
-/* line 110, ../scss/style.scss */
+/* line 125, ../scss/style.scss */
 button.nav:hover {
   color: black;
   background-color: white;
 }
-/* line 114, ../scss/style.scss */
+/* line 129, ../scss/style.scss */
 button.nav:active {
   background-color: rgba(204, 204, 204, 0.5);
 }
 
-/* line 119, ../scss/style.scss */
+/* line 134, ../scss/style.scss */
 button#prev {
   left: 1em;
 }
 
-/* line 123, ../scss/style.scss */
+/* line 138, ../scss/style.scss */
 button#next {
   right: 1em;
 }
