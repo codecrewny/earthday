@@ -11,6 +11,7 @@ $ ->
     history.pushState {}, "welcome", "/earthday/#slide1"
 
   slides = $(".slide")
+  # years_line() # for the line graph instead
   years_graph() # appends the graph to slide 13
 
   $("nav > button").on "click", ->
