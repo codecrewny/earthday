@@ -2,6 +2,9 @@ var years_graph = function() {
     var w=500;
     var h=300;
     var barPadding;
+
+    var dataset1980 = [ [1980,86.28610354]];
+
     var dataset = [
         [1980,86.28610354],
         [1981,74.45504087],
@@ -37,7 +40,7 @@ var years_graph = function() {
 	[2011,13.31607629],
 	[2012,7.35380117]
     ];
-
+    
     var scale=d3.scale.linear();
 
     var padding=30;
@@ -53,12 +56,19 @@ var years_graph = function() {
         .range([h-padding, padding]);
     
     var svg = d3.select("#slide13")
+	.data(dataset)
         .append("svg")
         .attr("width", w)
         .attr("height", h);
+/*
+    var svg = d3.select("#slide5")
+	.data(dataset1980)
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+*/
+
     var circles=svg.selectAll("circle")
-	.data(dataset)
-	.enter()
 	.append("circle")
 	.attr("cx", function(d) {
 	    return xScale(d[0]);})
@@ -66,15 +76,8 @@ var years_graph = function() {
 	    return yScale(d[1]);})
 	.attr("r", 5)
 	.attr("fill", "white")
-    // .attr("fill",function(d) {
-    //  return "rgb("+d[1]*12+",0,"+d[1]+")";})
 	.attr("opacity",0.7);
 
-    /*svg.append("g")
-      .call(d3.svg.axis()
-      .scale(xScale)
-      .orient("bottom"));*/  //<--this actually works
-    
     var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
@@ -94,23 +97,6 @@ var years_graph = function() {
 	.attr("class","axis")
 	.attr("transform","translate("+padding+",0)")
 	.call(yAxis);
-/*    
-    svg.selectAll("circle")
-      .on("mouseover", function(d) {
-	  svg.select(this)
-	  .attr("fill", "white")
-	  .transition()
-	  .duration(100)
-	      .attr("fill", "red");
-	  })
-      .on("mouseout", function(d) {
-	  svg.select(this)
-	  .transition()
-	  .duration(100)
-	      .attr("fill", "white");
-      });
-
-*/
     // var formatAsPercentage=d3.format(".1%");
     // formatAsPercentage(0.2143) returns 21.4%
 };
