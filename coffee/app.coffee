@@ -1,7 +1,7 @@
 $ ->
   current_url = document.URL
   pattern = /earthday\/#(.+)$/
-  n = 0 # which slide to show (will add one to this)
+  n = 0 # which slide to show (will +1 this)
   if current_url.match pattern
     str = current_url.match(pattern)[1]
     pattern2 = /slide([\d]+)$/
@@ -21,32 +21,26 @@ $ ->
     else if dir is "prev"
       n-- unless n <= 1
     if cache isnt n
-      cache = $("#slide#{cache}")
-      cache.addClass "bounceOutRight" if dir is "prev"
-      cache.addClass "bounceOutLeft" if dir is "next"
+      c = $("#slide#{cache}")
+      c.addClass "bounceOutRight" if dir is "prev"
+      c.addClass "bounceOutLeft" if dir is "next"
       delay 0.5, ->
-        cache.removeClass("bounceOutRight bounceOutLeft").hide()
+        c.removeClass("bounceOutRight bounceOutLeft").hide()
         slide = $("#slide#{n}")
         slide.show().addClass "bounceInLeft" if dir is "prev"
         slide.show().addClass "bounceInRight" if dir is "next"
         delay 1, -> slide.removeClass "bounceInLeft bounceInRight"
-        year = slide.attr "year"
-        $("#year").text year
+        year = slide.attr "year" # pull year data out of slide
+        $("#year").text year     # put year data into footer
         document.title = "(#{n}/#{slides.length}) Earth Day"
         history.pushState {}, "switching slides", "/earthday/#slide#{n}"
+        adjust_smog(n, cache, slides.length)
     else
       cache = $("#slide#{cache}")
       cache.addClass "wiggle"
-      delay 1, ->
-        cache.removeClass "wiggle"
-  $("#next").click()
-
-
-
-  $(".smogbuttons > button").on "click", ->
-    $(this).attr "disabled", "true"
-    $(this).siblings().removeAttr "disabled"
-    smog $(this).text()
+      delay 1, -> cache.removeClass "wiggle"
+  
+  $("#next").click() # first slide load
 
 
   $("html").keyup (event) ->
