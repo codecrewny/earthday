@@ -3,10 +3,57 @@
   var delay, puts, smog;
 
   $(function() {
-    return $(".smogbuttons > button").on("click", function() {
+    var n, slides;
+
+    n = 0;
+    slides = $(".slide");
+    $("nav > button").on("click", function() {
+      var dir, slide, year;
+
+      $("#slide" + n).hide();
+      dir = $(this).attr("id");
+      if (dir === "next") {
+        if (!(n >= slides.length - 1)) {
+          n++;
+        }
+      } else if (dir === "prev") {
+        if (!(n <= 1)) {
+          n--;
+        }
+      }
+      slide = $("#slide" + n);
+      slide.show();
+      year = slide.attr("year");
+      $("#year").text(year);
+      if (n === slides.length) {
+        $("#next").attr("disabled", "disabled");
+      } else {
+        $("#next").removeAttr("disabled");
+      }
+      if (n === 1) {
+        return $("#prev").attr("disabled", "disabled");
+      } else {
+        return $("#prev").removeAttr("disabled");
+      }
+    });
+    $("#next").click();
+    $(".smogbuttons > button").on("click", function() {
       $(this).attr("disabled", "true");
       $(this).siblings().removeAttr("disabled");
       return smog($(this).text());
+    });
+    return $("html").keyup(function(event) {
+      var key;
+
+      key = event.which;
+      if (key === 37) {
+        $("#prev").click();
+        return false;
+      }
+      if (key === 39) {
+        $("#next").click();
+        return false;
+      }
     });
   });
 
@@ -19,15 +66,29 @@
   };
 
   smog = function(action) {
-    if (action === "fade in smog") {
-      $("#smoglayer").addClass("smoggy fadeIn");
+    if (action === "clean air") {
+      $(".effects").children().addClass("fadeOut");
       return delay(1, function() {
-        return $("#smoglayer").removeClass("fadeIn");
+        return $(".effects").children().removeClass("fadeOut smog pollution");
       });
-    } else if (action === "fade out smog") {
-      $("#smoglayer").addClass("fadeOut");
+    } else if (action === "smoggy air") {
+      $("#smog").addClass("smog fadeIn");
+      delay(1, function() {
+        return $("#smog").removeClass("fadeIn");
+      });
+      $("#pollution").addClass("fadeOut");
       return delay(1, function() {
-        return $("#smoglayer").removeClass("fadeOut smoggy");
+        return $("#pollution").removeClass("pollution");
+      });
+    } else if (action === "pollution") {
+      $("#smog").addClass("smog fadeIn");
+      delay(1, function() {
+        return $("#smog").removeClass("fadeIn");
+      });
+      $("#data").addClass("pollution animated fadeIn");
+      $("#pollution").addClass("pollution fadeIn");
+      return delay(1, function() {
+        return $("#pollution").removeClass("fadeIn");
       });
     }
   };

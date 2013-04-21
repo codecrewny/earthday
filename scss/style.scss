@@ -15,27 +15,109 @@ html {
   background-image: url(../img/skyline.jpg);
   background-repeat: no-repeat;
   background-position: bottom center;
+  font-family: 'Questrial', sans-serif;
 }
 body {
   min-height:100%;
-  width: $width;
-  margin: 10px auto;
 }
-.smoggy {
+
+h2 {
+  font-size: 1.5em;
+}
+.smog {
   position: absolute;
   left: 0px;
-  top: 0px;
+  bottom: 20%;
   width: 100%;
   height: 100%;
   background-image: url(../img/SMOG.png);
+  opacity: 1;
+  z-index:-2;
+}
+
+.pollution {
+  position: absolute;
+  left: 0px;
+  bottom: 65%;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/POLLUTION.png);
   opacity: 1;
   z-index:-1;
 }
 
 header {
-  font-family: 'Questrial', sans-serif;
   color: white;
   font-size: 6em;
+  width: $width;
+  margin: 10px auto;
+}
+
+.slide {
+  display: block;
+  width: $width;
+  height: auto;
+  margin: auto;
+  color: white;
+  z-index: 0;
+  padding: 1em;
+  border-radius: 5px;
+  font-size: 1.5em;
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  p {
+    z-index: 1;
+  }
+}
+
+#data {
+  width: 100%;
+  height: 100px;
+  background-color: rgba(255,255,255,0.5);
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  height: 100px;
+  width: 100%;
+  padding: 1em;
+  #year {
+    font-size: 3em;
+    color: white;
+    position: absolute;
+    left: 50%;
+    margin-top: 20px;
+  }
+}
+
+button.nav {
+  width: 2em;
+  font-size: 3em;
+  color: white;
+  background-color: rgba(255,255,255,0.2);
+  border: 0;
+  position: absolute;
+  &:hover {
+    color: black;
+    background-color: white;
+  }
+  &:active {
+    background-color: rgba(204,204,204,0.5);
+  }
+}
+
+button#prev {
+  left: 1em;
+}
+
+button#next {
+  right: 1em;
 }
 
 // @media screen and (max-width: $width) {
