@@ -1,7 +1,6 @@
 var years_graph = function() {
     var w=500;
-    var h=100;
-    var barPadding;
+    var h=300;
     var dataset = [
         [1980,86.28610354],
         [1981,74.45504087],
@@ -37,10 +36,10 @@ var years_graph = function() {
 	[2011,13.31607629],
 	[2012,7.35380117]
     ];
-
+    
     var scale=d3.scale.linear();
 
-    var padding=30;
+    var padding=40;
 
     d3.max(dataset, function(d) {    
 	return d[0];  //References first value in each sub-array
@@ -53,36 +52,33 @@ var years_graph = function() {
         .range([h-padding, padding]);
     
     var svg = d3.select("#slide13")
+	.data(dataset)
         .append("svg")
         .attr("width", w)
         .attr("height", h);
+
     var circles=svg.selectAll("circle")
-	.data(dataset)
+    	.data(dataset)
 	.enter()
 	.append("circle")
+
 	.attr("cx", function(d) {
-	    return xScale(d[0]);
-    })
+	    return xScale(d[0]);})
 	.attr("cy", function(d) {
 	    return yScale(d[1]);})
 	.attr("r", 5)
 	.attr("fill", "white")
-    // .attr("fill",function(d) {
-    //  return "rgb("+d[1]*12+",0,"+d[1]+")";})
 	.attr("opacity",0.7);
 
-    /*svg.append("g")
-      .call(d3.svg.axis()
-      .scale(xScale)
-      .orient("bottom"));*/  //<--this actually works
-    
     var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks(dataset.length);
+        .tickFormat(d3.format("g"))
+        .ticks(3);
     svg.append("g")
 	.attr("class", "axis") //Assign "axis" class
 	.attr("transform", "translate(0," + (h - padding) + ")")
+        .attr("fill", "white")
 	.call(xAxis);   //same as what the commented content did
 
     var yAxis=d3.svg.axis()
@@ -91,9 +87,8 @@ var years_graph = function() {
         .ticks(10);
     svg.append("g")
 	.attr("class","axis")
-	.attr("transform","translate("+padding+",0)")
+	.attr("transform","translate("+padding/2+",0)")
 	.call(yAxis);
-    
     // var formatAsPercentage=d3.format(".1%");
     // formatAsPercentage(0.2143) returns 21.4%
 };
