@@ -2,7 +2,7 @@ puts = (str) -> console.log str
 yell = (str) -> alert str
 delay = (s, func) -> setTimeout func, s*1000 # http://stackoverflow.com/a/6460151
 window.go_home = ->
-  history.pushState {}, "welcome", "/"
+  history.pushState {}, "welcome", "/earthday/"
   location.reload()
 smog = (action) ->
   if action is "clean air"

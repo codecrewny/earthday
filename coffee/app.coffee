@@ -8,7 +8,7 @@ $ ->
     if str.match(pattern2)
       n = parseInt(str.match(pattern2)[1]) - 1
   else
-    history.pushState {}, "welcome", "/#slide1"
+    history.pushState {}, "welcome", "/earthday/#slide1"
 
   slides = $(".slide")
 
@@ -19,12 +19,12 @@ $ ->
       n++ unless n >= slides.length
     else if dir is "prev"
       n-- unless n <= 1
-    slide = $("#slide#{n}")
+    slide = $("/earthday/#slide#{n}")
     slide.show()
     year = slide.attr "year"
     $("#year").text year
     document.title = "(#{n}/#{slides.length}) Earth Day"
-    history.pushState {}, "switching slides", "/#slide#{n}"
+    history.pushState {}, "switching slides", "/earthday/#slide#{n}"
   $("#next").click()
 
 
